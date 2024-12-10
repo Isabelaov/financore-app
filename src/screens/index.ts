@@ -6,3 +6,4 @@ export * from './LoginScreen';
 export * from './RegisterScreen';
 export * from './ViewBudgetScreen';
 export * from './ViewEarningScreen';
+export * from './ForgotPasswordScreen';

@@ -6,13 +6,14 @@
  */
 
 import React from 'react';
-import {Text, View} from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Navigator } from './src/utils/navigation/navigator';
 
 function App(): React.JSX.Element {
   return (
-    <View>
-      <Text style={{color: 'white'}}>UWU</Text>
-    </View>
+    <GestureHandlerRootView>
+      <Navigator />
+    </GestureHandlerRootView>
   );
 }
 

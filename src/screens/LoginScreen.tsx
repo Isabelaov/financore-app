@@ -9,6 +9,7 @@ import { loginValidationSchema } from '../utils/validation/loginValidation';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 import { ContainersBySideStyles } from '../assets/styles/ContainersBySide.styles';
+import { TextStyles } from '../assets/styles';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -34,7 +35,7 @@ export const LoginScreen = ({ navigation }: Props) => {
 
   return (
     <View>
-      <Text>Log In</Text>
+      <Text style={TextStyles.title}>Log In</Text>
       {loading || submitting ? (
         <ActivityIndicator size="large" color={baseColors.primary} />
       ) : (
