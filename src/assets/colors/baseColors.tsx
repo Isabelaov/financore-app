@@ -1,5 +1,5 @@
 export const baseColors = {
   primary: '#301A4B',
-  secondary: '#6DB1BF',
+  secondary: '#4f8d71',
   buttonText: '#fff',
 };

@@ -9,7 +9,7 @@ import { loginValidationSchema } from '../utils/validation/loginValidation';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 import { ContainersBySideStyles } from '../assets/styles/ContainersBySide.styles';
-import { TextStyles } from '../assets/styles';
+import { FormStyles, TextStyles } from '../assets/styles';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -34,8 +34,10 @@ export const LoginScreen = ({ navigation }: Props) => {
   };
 
   return (
-    <View>
-      <Text style={TextStyles.title}>Log In</Text>
+    <View style={FormStyles.container}>
+      <Text style={TextStyles.title}>
+        Welcome <Text style={TextStyles.titleSecondary}>Back!</Text>
+      </Text>
       {loading || submitting ? (
         <ActivityIndicator size="large" color={baseColors.primary} />
       ) : (
@@ -55,6 +57,7 @@ export const LoginScreen = ({ navigation }: Props) => {
               <Input
                 placeholder="Email"
                 onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
                 value={values.email}
                 error={touched.email ? errors.email : undefined}
               />
@@ -69,10 +72,11 @@ export const LoginScreen = ({ navigation }: Props) => {
               />
 
               <View style={ContainersBySideStyles.container}>
-                <Button text="Log In" onPress={() => handleSubmit} />
+                <Button text="Log In" onPress={() => handleSubmit()} />
 
                 <Button
                   text="Register"
+                  backgroundPrimary={false}
                   onPress={() => navigation.navigate('Register')}
                 />
               </View>

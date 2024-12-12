@@ -1,5 +1,6 @@
-import {BC_URL} from '@env';
-import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
+import { BC_URL } from '@env';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 class ApiService {
   private instance: AxiosInstance;
@@ -18,8 +19,8 @@ class ApiService {
 
   private initializeInterceptors() {
     this.instance.interceptors.request.use(
-      config => {
-        const token = localStorage.getItem('authToken');
+      async config => {
+        const token = await AsyncStorage.getItem('AuthToken');
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
@@ -35,6 +36,7 @@ class ApiService {
       error => {
         if (error.response) {
           console.error(
+            error,
             `API Error: ${error.response.status} - ${error.response.data.message}`,
           );
         } else {

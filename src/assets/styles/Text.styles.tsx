@@ -14,9 +14,16 @@ export const TextStyles = StyleSheet.create({
     margin: 15,
     textAlign: 'center',
   },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
+  titleSecondary: {
+    color: baseColors.secondary,
+    margin: 15,
+    textAlign: 'center',
+    fontSize: 24,
     fontWeight: 'bold',
+  },
+  buttonText: {
+    fontSize: 20,
+    textAlign: 'center',
+    color: baseColors.buttonText,
   },
 });
