@@ -52,11 +52,16 @@ export const useAuth = () => {
         password,
       });
 
-      const token = res.data.data.access_token;
+      console.log({ res });
+
+      const token = res.data.accessToken;
 
       await AsyncStorage.setItem('AuthToken', token);
     } catch (error: any) {
-      Alert.alert('Error in login:', String(error));
+      console.log(error);
+
+      if (error.message !== 'Failed to register user in OneSignal')
+        Alert.alert('Error in login:', String(error));
     } finally {
       setLoading(false);
     }

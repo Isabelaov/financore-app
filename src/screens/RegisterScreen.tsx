@@ -1,12 +1,6 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
-import {
-  ActivityIndicator,
-  Alert,
-  GestureResponderEvent,
-  Text,
-  View,
-} from 'react-native';
+import { ActivityIndicator, Alert, Text, View } from 'react-native';
 import { RootStackParamList } from '../interfaces';
 import { useAuth } from '../hooks';
 import { IUser } from '../interfaces';

@@ -1,6 +1,6 @@
 export type RootStackParamList = {
   Register: any;
-  Login: undefined;
+  Login: any;
   ForgotPassword: undefined;
 
   ViewEarning: { id: string };

@@ -25,7 +25,8 @@ export const LoginScreen = ({ navigation }: Props) => {
     setSubmitting(true);
     try {
       await login(values.email, values.password);
-      navigation.replace('EarningsSummary');
+
+      navigation.replace('Login', { screen: 'EarningsSummary' });
     } catch (error: any) {
       Alert.alert('Error', String(error));
     } finally {
