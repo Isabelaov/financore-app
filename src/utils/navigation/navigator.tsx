@@ -17,8 +17,9 @@ import {
   ValidateCodeScreen,
   ResetPasswordScreen,
 } from '../../screens';
+import { RootStackParamList } from '../../interfaces';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const Navigator = () => {
   const { isAuthenticated, loading } = useAuth();

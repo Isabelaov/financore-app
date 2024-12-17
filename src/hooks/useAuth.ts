@@ -92,6 +92,25 @@ export const useAuth = () => {
     return res.data;
   };
 
+  const resetPassword = async (data: {
+    email: string;
+    token: string;
+    password: string;
+  }) => {
+    setLoading(true);
+
+    try {
+      await apiService.post('auth/reset-password', {
+        newPassword: data.password,
+        ...data,
+      });
+    } catch (error) {
+      Alert.alert('Error :c', String(error));
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return {
     register,
     login,
@@ -101,5 +120,6 @@ export const useAuth = () => {
     loading,
     isAuthenticated,
     validateCode,
+    resetPassword,
   };
 };
