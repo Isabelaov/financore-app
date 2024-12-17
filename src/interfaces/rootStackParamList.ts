@@ -1,10 +1,14 @@
 export type RootStackParamList = {
-  Register: undefined;
-  Login: undefined;
-  ViewEarning: {id: string};
+  Register: any;
+  Login: any;
+  ForgotPassword: undefined;
+  ValidateCode: { email: string };
+  ResetPassword: { email: string; token: string };
+
+  ViewEarning: { id: string };
   EarningsSummary: undefined;
-  CreateEditEarning: {id?: string};
+  CreateEditEarning: { id?: string };
   BudgetSummary: undefined;
-  CreateEditBudget: {id?: string};
-  ViewBudget: {id: string};
+  CreateEditBudget: { id?: string };
+  ViewBudget: { id: string };
 };
