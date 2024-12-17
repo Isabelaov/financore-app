@@ -7,7 +7,7 @@ export const ButtonStyles = StyleSheet.create({
     padding: 5,
     borderRadius: 10,
     width: 150,
-    margin: 20,
+    margin: 15,
     alignSelf: 'center',
   },
   secondaryButton: {
@@ -15,7 +15,14 @@ export const ButtonStyles = StyleSheet.create({
     padding: 5,
     borderRadius: 10,
     width: 150,
-    margin: 20,
+    margin: 15,
+    alignSelf: 'center',
+  },
+  button: {
+    padding: 5,
+    borderRadius: 10,
+    width: 150,
+    margin: 15,
     alignSelf: 'center',
   },
 });

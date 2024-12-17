@@ -5,9 +5,9 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 class ApiService {
   private instance: AxiosInstance;
 
-  constructor(baseURL: string) {
+  constructor() {
     this.instance = axios.create({
-      baseURL,
+      baseURL: BC_URL,
       timeout: 10000,
       headers: {
         'Content-Type': 'application/json',
@@ -27,8 +27,6 @@ class ApiService {
         return config;
       },
       error => {
-        console.log(error);
-
         return Promise.reject(error);
       },
     );
@@ -36,15 +34,19 @@ class ApiService {
     this.instance.interceptors.response.use(
       response => response,
       error => {
-        console.log(error);
+        console.log({ ...error });
 
         if (error.response) {
           console.error(
             error,
-            `API Error: ${error.response.status} - ${error.response.data.message}`,
+            `API Error: ${error.response.status} - ${error.response.message}`,
           );
         } else {
-          console.error(`Network Error: ${error.message}`);
+          console.error(`Network Error: ${error.message}`, error);
+        }
+
+        if (error.response?.status === 401) {
+          AsyncStorage.removeItem('AuthToken');
         }
         return Promise.reject(error);
       },
@@ -69,12 +71,12 @@ class ApiService {
     return response.data;
   }
 
-  public async put<T>(
+  public async patch<T>(
     url: string,
     data?: unknown,
     config?: AxiosRequestConfig,
   ): Promise<T> {
-    const response: AxiosResponse<T> = await this.instance.put(
+    const response: AxiosResponse<T> = await this.instance.patch(
       url,
       data,
       config,
@@ -88,6 +90,6 @@ class ApiService {
   }
 }
 
-const apiService = new ApiService(BC_URL);
+const apiService = new ApiService();
 
 export default apiService;

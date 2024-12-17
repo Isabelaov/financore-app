@@ -14,6 +14,8 @@ import {
   RegisterScreen,
   ViewBudgetScreen,
   ViewEarningScreen,
+  ValidateCodeScreen,
+  ResetPasswordScreen,
 } from '../../screens';
 
 const Stack = createNativeStackNavigator();
@@ -62,6 +64,12 @@ export const Navigator = () => {
             />
 
             <Stack.Screen
+              name="ResetPassword"
+              component={ResetPasswordScreen}
+              options={{ headerShown: false }}
+            />
+
+            <Stack.Screen
               name="Register"
               component={RegisterScreen}
               options={{ headerShown: false }}
@@ -70,6 +78,13 @@ export const Navigator = () => {
             <Stack.Screen
               name="ForgotPassword"
               component={ForgotPasswordScreen}
+              options={{ headerShown: false }}
+            />
+
+            <Stack.Screen
+              name="ValidateCode"
+              component={ValidateCodeScreen}
+              options={{ headerShown: false }}
             />
           </>
         )}

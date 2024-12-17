@@ -7,3 +7,5 @@ export * from './RegisterScreen';
 export * from './ViewBudgetScreen';
 export * from './ViewEarningScreen';
 export * from './ForgotPasswordScreen';
+export * from './ValidateCodeScreen';
+export * from './ResetPasswordScreen';

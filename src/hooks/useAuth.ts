@@ -52,14 +52,10 @@ export const useAuth = () => {
         password,
       });
 
-      console.log({ res });
-
       const token = res.data.accessToken;
 
       await AsyncStorage.setItem('AuthToken', token);
     } catch (error: any) {
-      console.log(error);
-
       if (error.message !== 'Failed to register user in OneSignal')
         Alert.alert('Error in login:', String(error));
     } finally {
@@ -69,6 +65,7 @@ export const useAuth = () => {
 
   const logout = async () => {
     await AsyncStorage.removeItem('AuthToken');
+    setIsAuthenticated(false);
   };
 
   const getAuthToken = async () => {
@@ -79,7 +76,20 @@ export const useAuth = () => {
   };
 
   const forgotPassword = async (email: string) => {
-    console.log({ email });
+    const res: { data: any } = await apiService.post('auth/forgot-password', {
+      email,
+    });
+
+    return res.data;
+  };
+
+  const validateCode = async (data: { email: string; token: string }) => {
+    const res: { data: any } = await apiService.post(
+      'auth/validate-recovery-code',
+      { ...data },
+    );
+
+    return res.data;
   };
 
   return {
@@ -90,5 +100,6 @@ export const useAuth = () => {
     forgotPassword,
     loading,
     isAuthenticated,
+    validateCode,
   };
 };

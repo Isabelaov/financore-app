@@ -26,4 +26,9 @@ export const TextStyles = StyleSheet.create({
     textAlign: 'center',
     color: baseColors.buttonText,
   },
+  anchorText: {
+    fontSize: 15,
+    textAlign: 'center',
+    color: baseColors.secondary,
+  },
 });

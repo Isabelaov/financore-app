@@ -8,8 +8,9 @@ import { baseColors } from '../assets/colors/baseColors';
 import { loginValidationSchema } from '../utils/validation/loginValidation';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
-import { ContainersBySideStyles } from '../assets/styles/ContainersBySide.styles';
+import { ContainersStyles } from '../assets/styles/Containers.styles';
 import { FormStyles, TextStyles } from '../assets/styles';
+import { Anchor } from '../components';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -72,7 +73,7 @@ export const LoginScreen = ({ navigation }: Props) => {
                 error={touched.password ? errors.password : undefined}
               />
 
-              <View style={ContainersBySideStyles.container}>
+              <View style={ContainersStyles.bySide}>
                 <Button text="Log In" onPress={() => handleSubmit()} />
 
                 <Button
@@ -81,6 +82,11 @@ export const LoginScreen = ({ navigation }: Props) => {
                   onPress={() => navigation.navigate('Register')}
                 />
               </View>
+
+              <Anchor
+                text="Forgot Password?"
+                onPress={() => navigation.navigate('ForgotPassword')}
+              />
             </>
           )}
         </Formik>
