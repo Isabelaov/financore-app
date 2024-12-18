@@ -1,4 +1,5 @@
 export * from './Button';
 export * from './Input';
 export * from './Anchor';
-export * from './LogOutButton';
+export * from './LogoutButton';
+export * from './Icon';

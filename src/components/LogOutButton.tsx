@@ -1,6 +1,22 @@
 import React from 'react';
-import { Text, TouchableOpacityProps } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import { CustomIcon } from './Icon';
 
-export const LogOutButton: React.FC<TouchableOpacityProps> = () => {
-  return <Text>LogOutButton</Text>;
+type IconButtonProps = TouchableOpacityProps & {
+  isLoading?: boolean;
+  disabled?: boolean;
+};
+
+export const LogoutButton: React.FC<IconButtonProps> = ({
+  isLoading = false,
+  disabled = false,
+  ...rest
+}) => {
+  return (
+    <>
+      <TouchableOpacity disabled={disabled || isLoading} {...rest}>
+        <CustomIcon family="MaterialIcons" name="logout" />
+      </TouchableOpacity>
+    </>
+  );
 };

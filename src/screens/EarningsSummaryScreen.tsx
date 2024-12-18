@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { LogOutButton } from '../components';
+import { LogoutButton } from '../components';
 
 export const EarningsSummaryScreen = () => {
   return (
     <View>
       <Text>Earnings Summary Screen</Text>
-      <LogOutButton />
+      <LogoutButton />
     </View>
   );
 };
