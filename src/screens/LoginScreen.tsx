@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { ActivityIndicator, Alert, Text, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Formik } from 'formik';
 import { RootStackParamList } from '../interfaces';
 import { useAuth } from '../hooks';
-import { baseColors } from '../assets/colors/baseColors';
 import { loginValidationSchema } from '../utils/validation/loginValidation';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 import { ContainersStyles } from '../assets/styles/Containers.styles';
 import { FormStyles, TextStyles } from '../assets/styles';
-import { Anchor } from '../components';
+import { Anchor, Loading } from '../components';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -41,7 +40,7 @@ export const LoginScreen = ({ navigation }: Props) => {
         Welcome <Text style={TextStyles.titleSecondary}>Back!</Text>
       </Text>
       {loading || submitting ? (
-        <ActivityIndicator size="large" color={baseColors.primary} />
+        <Loading />
       ) : (
         <Formik
           initialValues={{ email: '', password: '' }}

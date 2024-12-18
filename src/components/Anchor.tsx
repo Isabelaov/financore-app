@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  ActivityIndicator,
-  Text,
-  TouchableOpacity,
-  TouchableOpacityProps,
-} from 'react-native';
-import { baseColors } from '../assets/colors/baseColors';
+import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { TextStyles } from '../assets/styles';
+import { Loading } from './Loading';
 
 type AnchorProps = TouchableOpacityProps & {
   text: string;
@@ -23,7 +18,7 @@ export const Anchor: React.FC<AnchorProps> = ({
   return (
     <TouchableOpacity disabled={disabled || isLoading} {...props}>
       {isLoading ? (
-        <ActivityIndicator color={baseColors.primary} />
+        <Loading size="small" />
       ) : (
         <Text style={TextStyles.anchorText}>{text}</Text>
       )}

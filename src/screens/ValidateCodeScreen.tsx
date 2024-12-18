@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ActivityIndicator, Alert, Text, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import * as Yup from 'yup';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import OTPTextInput from 'react-native-otp-textinput';
@@ -7,7 +7,7 @@ import { Formik } from 'formik';
 import { RootStackParamList } from '../interfaces';
 import { useAuth } from '../hooks';
 import { ContainersStyles, OtpInputStyles, TextStyles } from '../assets/styles';
-import { Button } from '../components';
+import { Button, Loading } from '../components';
 import { baseColors } from '../assets/colors/baseColors';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ValidateCode'>;
@@ -61,7 +61,7 @@ export const ValidateCodeScreen = ({
             )}
 
             {loading ? (
-              <ActivityIndicator size="large" color={baseColors.primary} />
+              <Loading />
             ) : (
               <Button
                 text="Send"

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { ActivityIndicator, Alert, Text, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import { Formik } from 'formik';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../interfaces';
 import { useAuth } from '../hooks';
 import { ContainersStyles, TextStyles } from '../assets/styles';
 import { passwordValidationSchema } from '../utils/validation';
-import { Button, Input } from '../components';
-import { baseColors } from '../assets/colors/baseColors';
+import { Button, Input, Loading } from '../components';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ResetPassword'>;
 
@@ -67,7 +66,7 @@ export const ResetPasswordScreen = ({ navigation, route }: Props) => {
             />
 
             {loading ? (
-              <ActivityIndicator size="large" color={baseColors.primary} />
+              <Loading />
             ) : (
               <Button text="Send" onPress={() => handleSubmit()} />
             )}

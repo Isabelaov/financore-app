@@ -3,3 +3,4 @@ export * from './Input';
 export * from './Anchor';
 export * from './LogoutButton';
 export * from './Icon';
+export * from './Loading';

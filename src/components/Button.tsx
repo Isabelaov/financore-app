@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  TouchableOpacityProps,
-  TouchableOpacity,
-  ActivityIndicator,
-  Text,
-} from 'react-native';
-import { baseColors } from '../assets/colors/baseColors';
+import { TouchableOpacityProps, TouchableOpacity, Text } from 'react-native';
 import { TextStyles, ButtonStyles } from '../assets/styles';
+import { Loading } from './Loading';
 
 type ButtonProps = TouchableOpacityProps & {
   text: string;
@@ -32,7 +27,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled || isLoading}
       {...rest}>
       {isLoading ? (
-        <ActivityIndicator color={baseColors.primary} />
+        <Loading />
       ) : (
         <Text style={TextStyles.buttonText}>{text}</Text>
       )}

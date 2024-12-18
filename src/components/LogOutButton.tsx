@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { CustomIcon } from './Icon';
+import { Loading } from './Loading';
 
 type IconButtonProps = TouchableOpacityProps & {
   isLoading?: boolean;
@@ -13,10 +14,12 @@ export const LogoutButton: React.FC<IconButtonProps> = ({
   ...rest
 }) => {
   return (
-    <>
-      <TouchableOpacity disabled={disabled || isLoading} {...rest}>
+    <TouchableOpacity disabled={disabled || isLoading} {...rest}>
+      {isLoading ? (
+        <Loading />
+      ) : (
         <CustomIcon family="MaterialIcons" name="logout" />
-      </TouchableOpacity>
-    </>
+      )}
+    </TouchableOpacity>
   );
 };

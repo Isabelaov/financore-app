@@ -2,8 +2,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useAuth } from '../../hooks';
-import { ActivityIndicator } from 'react-native';
-import { baseColors } from '../../assets/colors/baseColors';
 import {
   BudgetsSummaryScreen,
   CreateEditBudgetScreen,
@@ -18,6 +16,7 @@ import {
   ResetPasswordScreen,
 } from '../../screens';
 import { RootStackParamList } from '../../interfaces';
+import { Loading } from '../../components';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -25,7 +24,7 @@ export const Navigator = () => {
   const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
-    return <ActivityIndicator size="large" color={baseColors.primary} />;
+    return <Loading />;
   }
 
   return (

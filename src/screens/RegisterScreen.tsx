@@ -1,14 +1,13 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
-import { ActivityIndicator, Alert, Text, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import { RootStackParamList } from '../interfaces';
 import { useAuth } from '../hooks';
 import { IUser } from '../interfaces';
 import { FormStyles, TextStyles } from '../assets/styles';
-import { baseColors } from '../assets/colors/baseColors';
 import { Formik } from 'formik';
 import { registerValidationSchema } from '../utils/validation';
-import { Input, Button } from '../components';
+import { Input, Button, Loading } from '../components';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Register'>;
 
@@ -39,7 +38,7 @@ export const RegisterScreen = ({ navigation }: Props) => {
       </Text>
 
       {loading || submitting ? (
-        <ActivityIndicator size="large" color={baseColors.primary} />
+        <Loading />
       ) : (
         <Formik
           initialValues={{
