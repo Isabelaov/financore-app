@@ -34,12 +34,10 @@ class ApiService {
     this.instance.interceptors.response.use(
       response => response,
       error => {
-        console.log({ ...error });
-
         if (error.response) {
           console.error(
+            `API Error: ${error.response.status} - ${error.response.data.message}`,
             error,
-            `API Error: ${error.response.status} - ${error.response.message}`,
           );
         } else {
           console.error(`Network Error: ${error.message}`, error);

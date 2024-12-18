@@ -64,8 +64,10 @@ export const useAuth = () => {
   };
 
   const logout = async () => {
+    setLoading(true);
     await AsyncStorage.removeItem('AuthToken');
     setIsAuthenticated(false);
+    setLoading(false);
   };
 
   const getAuthToken = async () => {

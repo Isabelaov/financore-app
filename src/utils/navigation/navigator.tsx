@@ -16,7 +16,7 @@ import {
   ResetPasswordScreen,
 } from '../../screens';
 import { RootStackParamList } from '../../interfaces';
-import { Loading } from '../../components';
+import { HeaderLeft, HeaderRight, Loading } from '../../components';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -36,7 +36,10 @@ export const Navigator = () => {
               name="EarningsSummary"
               component={EarningsSummaryScreen}
               options={{
-                headerShown: false,
+                headerLeft: HeaderLeft,
+                headerRight: HeaderRight,
+                title: 'Earning',
+                headerTitleAlign: 'center',
                 gestureEnabled: false,
               }}
             />

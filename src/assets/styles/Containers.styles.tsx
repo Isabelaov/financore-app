@@ -13,4 +13,7 @@ export const ContainersStyles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  withHeader: {
+    paddingTop: 20,
+  },
 });
