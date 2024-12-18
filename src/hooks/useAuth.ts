@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 export const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getAuthToken();
@@ -55,6 +55,7 @@ export const useAuth = () => {
       const token = res.data.accessToken;
 
       await AsyncStorage.setItem('AuthToken', token);
+      setIsAuthenticated(true);
     } catch (error: any) {
       if (error.message !== 'Failed to register user in OneSignal')
         Alert.alert('Error in login:', String(error));
@@ -73,7 +74,6 @@ export const useAuth = () => {
   const getAuthToken = async () => {
     const token = await AsyncStorage.getItem('AuthToken');
     setIsAuthenticated(!!token);
-    setLoading(false);
     return token;
   };
 

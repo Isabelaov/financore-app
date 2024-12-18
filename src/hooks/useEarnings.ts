@@ -10,6 +10,8 @@ export const useEarnings = () => {
   const [earnings, setEarnings] = useState<IEarning[]>([]);
 
   useEffect(() => {
+    console.log({ isAuthenticated });
+
     if (!isAuthenticated) {
       Alert.alert('Not authenticated');
       return;
