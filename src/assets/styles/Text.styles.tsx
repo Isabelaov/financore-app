@@ -31,4 +31,9 @@ export const TextStyles = StyleSheet.create({
     textAlign: 'center',
     color: baseColors.secondary,
   },
+  earningDifference: {
+    fontSize: 25,
+    textAlign: 'center',
+    color: baseColors.secondary,
+  },
 });

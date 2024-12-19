@@ -6,7 +6,6 @@ import {
   BudgetsSummaryScreen,
   CreateEditBudgetScreen,
   CreateEditEarningScreen,
-  EarningsSummaryScreen,
   ForgotPasswordScreen,
   LoginScreen,
   RegisterScreen,
@@ -14,6 +13,7 @@ import {
   ViewEarningScreen,
   ValidateCodeScreen,
   ResetPasswordScreen,
+  HomeScreen,
 } from '../../screens';
 import { RootStackParamList } from '../../interfaces';
 import { HeaderLeft, HeaderRight, Loading } from '../../components';
@@ -33,8 +33,8 @@ export const Navigator = () => {
         {isAuthenticated ? (
           <>
             <Stack.Screen
-              name="EarningsSummary"
-              component={EarningsSummaryScreen}
+              name="Home"
+              component={HomeScreen}
               options={{
                 headerLeft: HeaderLeft,
                 headerRight: HeaderRight,

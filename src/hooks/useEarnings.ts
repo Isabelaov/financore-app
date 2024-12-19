@@ -1,31 +1,25 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useAuth } from './useAuth';
 import { IEarning } from '../interfaces';
 import { Alert } from 'react-native';
 import apiService from '../api/apiService';
+import { cleanEarnings } from '../utils/calcs';
 
 export const useEarnings = () => {
-  const { isAuthenticated } = useAuth();
   const [loading, setLoading] = useState(true);
   const [earnings, setEarnings] = useState<IEarning[]>([]);
-
-  useEffect(() => {
-    console.log({ isAuthenticated });
-
-    if (!isAuthenticated) {
-      Alert.alert('Not authenticated');
-      return;
-    }
-  }, [isAuthenticated]);
 
   const getEarnings = useCallback(async () => {
     setLoading(true);
     try {
-      const res: { data: IEarning[] } = await apiService.get('earnings', {});
-      console.log({ data: res.data });
-      setEarnings(res.data);
+      const res: any = await apiService.get('earnings', {});
+      const cleanedEarnings = cleanEarnings(res.data?.data);
+      setEarnings(cleanedEarnings);
+      console.log({ cleanedEarnings });
     } catch (error: any) {
-      Alert.alert('Error', error.response?.data?.message || 'Unknown error');
+      Alert.alert(
+        'Error',
+        error.response?.data?.message || 'Unable to make petition',
+      );
     } finally {
       setLoading(false);
     }
@@ -48,8 +42,7 @@ export const useEarnings = () => {
     setLoading(true);
 
     try {
-      await apiService.post('earnings', data);
-      console.log('earning created');
+      return await apiService.post('earnings', data);
     } catch (error: any) {
       Alert.alert('Error', error.response?.data?.message || 'Unknown error');
     } finally {

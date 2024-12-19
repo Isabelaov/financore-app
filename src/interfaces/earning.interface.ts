@@ -1,8 +1,8 @@
 export interface IEarning {
   id?: string;
   name: string;
-  generalAmount: number;
-  amountBudgeted?: number;
-  startDate: Date;
-  endDate: Date;
+  generalAmount: number | string;
+  amountBudgeted?: number | string;
+  startDate: string;
+  endDate: string;
 }

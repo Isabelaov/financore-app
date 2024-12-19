@@ -26,7 +26,7 @@ export const LoginScreen = ({ navigation }: Props) => {
     try {
       await login(values.email, values.password);
 
-      navigation.replace('Login', { screen: 'EarningsSummary' });
+      navigation.replace('Login', { screen: 'Home' });
     } catch (error: any) {
       Alert.alert('Error', String(error));
     } finally {

@@ -5,8 +5,8 @@ export type RootStackParamList = {
   ValidateCode: { email: string };
   ResetPassword: { email: string; token: string };
 
+  Home: undefined;
   ViewEarning: { id: string };
-  EarningsSummary: undefined;
   CreateEditEarning: { id?: string };
   BudgetSummary: undefined;
   CreateEditBudget: { id?: string };

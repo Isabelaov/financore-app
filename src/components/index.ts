@@ -6,3 +6,4 @@ export * from './Icon';
 export * from './Loading';
 export * from './Header';
 export * from './ProfileButton';
+export * from './AddButton';
